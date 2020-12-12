@@ -9,7 +9,7 @@ public class DoubleSides_FillAmount : MonoBehaviour
     Image theCircle;
 
 
-    void Start()
+    void Awake()
     {
         theCircle = this.GetComponent<Image>();
 

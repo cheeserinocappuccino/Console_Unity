@@ -13,7 +13,7 @@ public class GameController_stepONE : MonoBehaviour
         OuterRingFill = OuterRing.GetComponent<DoubleSides_FillAmount>();
         InnerRingFill = InnerRing.GetComponent<DoubleSides_FillAmount>();
 
-        OuterRingFill.SetFill(0.0f, 0.0f);
+        OuterRingFill.SetFill(0.5f, 0.0f);
         InnerRingFill.SetFill(0.0f, 0.0f);
     }
 

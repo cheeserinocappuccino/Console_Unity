@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 2081300322}
   m_Layer: 0
   m_Name: ControllerController
-  m_TagString: Untagged
+  m_TagString: controllerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1907,13 +1907,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1786bced0bbca2a43b1e1fbb2824d2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coms: []
   useport: COM8
   baudrate: 115200
   databits: 8
   stopbits: 1
   parity: 0
-  commandSTR: 77
+  useport2: COM8
+  baudrate2: 115200
+  databits2: 8
+  stopbits2: 1
+  parity2: 0
 --- !u!4 &2081300323
 Transform:
   m_ObjectHideFlags: 0

@@ -204,7 +204,7 @@ public class ControllerController : MonoBehaviour
                    
             }
             catch {
-                Debug.Log("reading port1 error");
+                //Debug.Log("reading port1 error");
                 port1Reconnecting = true;
             }
         }
@@ -239,7 +239,7 @@ public class ControllerController : MonoBehaviour
                         commandShow2+= commandBuffer2[i].ToString();
 
                     }
-                    Debug.Log(commandShow2);
+                    //Debug.Log(commandShow2);
 
                     // now we know what command we received, Let's assign some task
 
@@ -252,7 +252,7 @@ public class ControllerController : MonoBehaviour
             }
             catch
             {
-                Debug.Log("reading port2 error");
+                //Debug.Log("reading port2 error");
                 port1Reconnecting = true;
             }
         }
@@ -269,13 +269,13 @@ public class ControllerController : MonoBehaviour
             {
                 
                 port1.Open();
-                Debug.Log("port1 opened");
+                //Debug.Log("port1 opened");
                 port1Reconnecting = false ;
                
             }
             catch
             {
-                Debug.Log("Failed Open Port1 ");
+                //Debug.Log("Failed Open Port1 ");
                
 
 
@@ -294,13 +294,13 @@ public class ControllerController : MonoBehaviour
             {
 
                 port2.Open();
-                Debug.Log("port2 opened");
+                //Debug.Log("port2 opened");
                 port1Reconnecting = false;
 
             }
             catch
             {
-                Debug.Log("Failed Open Port2 ");
+               // Debug.Log("Failed Open Port2 ");
 
 
 

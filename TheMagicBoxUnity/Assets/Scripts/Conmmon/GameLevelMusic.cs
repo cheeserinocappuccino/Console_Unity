@@ -116,7 +116,7 @@ public class GameLevelMusic : MonoBehaviour
 
             if(isRed == true)
             {
-                _noteJsonHeader.everyNotes[i].noteColor = new Color(255, 0, 75, 255);
+                _noteJsonHeader.everyNotes[i].noteColor = new Color(255, 0, 0, 255);
             }
             else
             {

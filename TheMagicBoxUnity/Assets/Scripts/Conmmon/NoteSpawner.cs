@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 public class NoteSpawner : MonoBehaviour
 {
     public int thisSpawnerNumber;
@@ -32,6 +33,7 @@ public class NoteSpawner : MonoBehaviour
             {
                 // 生成音符的寫法
                 GameObject noteTemp = Instantiate(noteInstance);
+                noteTemp.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, thisSpawnerNumber * 60);
                 noteTemp.transform.parent = canvas.transform;
                 noteTemp.transform.localPosition = new Vector3(0, 0, 0);
                 noteTemp.GetComponent<NoteInstantiate>().noteColor = e.color;

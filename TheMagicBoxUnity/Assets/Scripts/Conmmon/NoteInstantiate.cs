@@ -23,10 +23,10 @@ public class NoteInstantiate : MonoBehaviour
 
         shrinkSpeed = ((startSize - endSize) / arriveTime);
         nowSize = startSize;
-        Debug.Log(shrinkSpeed);
+        //Debug.Log(shrinkSpeed);
 
         // 共有6個位置，設定為0~5，跟json的位置一樣
-        thisNoteImage.rectTransform.rotation = Quaternion.Euler(0, 0, noteIndex * 60);
+        //thisNoteImage.rectTransform.rotation = Quaternion.Euler(0, 0, noteIndex * 60);
     }
 
 

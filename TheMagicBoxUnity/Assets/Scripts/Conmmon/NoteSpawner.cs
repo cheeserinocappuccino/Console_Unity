@@ -29,12 +29,13 @@ public class NoteSpawner : MonoBehaviour
     {
         if (thisSpawnerNumber != -1)
         {
-            if (e.spawners[thisSpawnerNumber] == true) // 生成的時候要在combatzone裡面//--------------------------------------------重要////////////////////
+            if (e.spawners[thisSpawnerNumber] == true) 
             {
                 // 生成音符的寫法
                 GameObject noteTemp = Instantiate(noteInstance);
                 noteTemp.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, thisSpawnerNumber * 60);
-                noteTemp.transform.parent = canvas.transform;
+                //noteTemp.transform.parent = canvas.transform;
+                noteTemp.transform.SetParent(canvas.transform);
                 noteTemp.transform.localPosition = new Vector3(0, 0, 0);
                 noteTemp.GetComponent<NoteInstantiate>().noteColor = e.color;
             }

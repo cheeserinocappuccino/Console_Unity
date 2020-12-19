@@ -8,7 +8,7 @@ public class Metronome : MonoBehaviour
     public GameLevelMusic nowplay;
     public AudioSource LevelAudioSource;
 
-    private GotoMain gotoMain;
+    private GoToMain gotoMain;
     public Gif backgrounds;
 
  
@@ -51,7 +51,7 @@ public class Metronome : MonoBehaviour
 
         try
         {
-            gotoMain = GameObject.FindGameObjectWithTag("GoToMain").GetComponent<GotoMain>();
+            gotoMain = GameObject.FindGameObjectWithTag("GoToMain").GetComponent<GoToMain>();
 
 
         }

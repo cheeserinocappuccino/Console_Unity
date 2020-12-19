@@ -35,7 +35,7 @@ public class NoteReceiver : MonoBehaviour
     int spawner;
 
 
-    //public string[] playingButtons; // 這裡最好不要這樣寫會變成每一個都要設定
+    public string[] playingButtons; // 這裡最好不要這樣寫會變成每一個都要設定
 
     public delegate void CallPressContainer();
 
@@ -44,12 +44,13 @@ public class NoteReceiver : MonoBehaviour
     bool unMiss = true;
     float tolerenceTemp;
 
+    int red_index = 0;
+    int blue_index = 0;
 
-    public Color normalColor;
-    public Color goodHitColor;
-    public Color badHitColor;
-    private Color nowColor;
-  
+    // 由ControllerController負責存那兩個指針的資料到這裡
+    public static float red_degree = 45;
+    public static float blue_degree = 0;
+
     void Awake()
     {
         _metronome = GameObject.FindGameObjectWithTag("GameController").GetComponent<Metronome>();
@@ -77,6 +78,7 @@ public class NoteReceiver : MonoBehaviour
                 Metronome.combo = 0;
                 Metronome.miss++;
                 unMiss = true;
+                Debug.Log("you Missed");
             }
 
         }
@@ -111,26 +113,53 @@ public class NoteReceiver : MonoBehaviour
         if (tolerenceTemp <= 0.1f)
             tolerenceTemp = 0.15f;
         //Debug.Log(threshHoldTimer + "threshHolde");
-        for (int i = 0; i < e.spawners.Length; i++)
+        if(receiverNumber == 0)// 0~5是紅色負責，receivernumber要給0，現在debug是按T
         {
-            if (e.spawners[receiverNumber] == true) // 應該要偵測到就不再回圈 不然會永遠都是true或是永遠是false
+            for (int i = 0; i < 6; i++) 
             {
-                this.threshHold = true;
-                callPressContainer = Press;
-                unMiss = false;
-                foundPressing = true;
+                if (e.spawners[i] == true) // 應該要偵測到就不再回圈 不然會永遠都是true或是永遠是false
+                {
+                    this.threshHold = true;
+                    callPressContainer = Press;
+                    unMiss = false;
+                    foundPressing = true;
+                    red_index = i;// 至少要知道這顆紅色是第幾顆紅色才能判斷指針吧
 
-            }
-            else
-            {
+                }
+                else
+                {
 
-                unMiss = true;
+                    unMiss = true;
+                }
+                if (foundPressing == true)
+                {
+                    break;
+                }
             }
-            if (foundPressing == true)
+        }else if(receiverNumber == 1)
+        {
+            for (int i = 6; i < 12; i++)
             {
-                break;
+                if (e.spawners[i] == true) // 應該要偵測到就不再回圈 不然會永遠都是true或是永遠是false
+                {
+                    this.threshHold = true;
+                    callPressContainer = Press;
+                    unMiss = false;
+                    foundPressing = true;
+                    blue_index = i; // 至少要知道這顆藍色是第幾顆藍色才能判斷指針吧
+                }
+                else
+                {
+
+                    unMiss = true;
+                }
+                if (foundPressing == true)
+                {
+                    break;
+                }
             }
         }
+    
 
 
 
@@ -140,42 +169,77 @@ public class NoteReceiver : MonoBehaviour
     void Press()
     {
 
-
-        if (threshHold == true && Input.GetKeyDown(KeyCode.T))
+        if (receiverNumber == 0)
         {
-            //Debug.Log("press");
-            if (threshHoldTimer >= tolerenceTemp / 8.0f && threshHoldTimer <= (tolerenceTemp / 8.0f * 6f))
+            if (threshHold == true && Input.GetButtonDown(playingButtons[receiverNumber]) && red_degree > ((red_index * 60) -30) && red_degree < (red_index * 60) + 30)
             {
-                Debug.Log("GOOD");
-                //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(goodHitColor.r * 1, goodHitColor.r * 1, goodHitColor.r, 1.0f));
-                nowColor = goodHitColor * 5.0f;
-                good++;
-                Metronome.good++;
-               
-            }
-            else
-            {
-                Debug.Log("BAD");
-                //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(badHitColor.r * 1, badHitColor.r * 1, badHitColor.r, 1.0f));
-                nowColor = badHitColor * 2.0f;
-                bad++;
-                Metronome.bad++;
-                
-            }
-            Metronome.score++; // 以後也用事件可能比較好
-            Metronome.combo += 1;
-            
-            callPressContainer = DisCombo; // 按過就關掉了
-            //combo.text = "Combo : " + Metronome.combo + " total Good : " + good + " BAD : " + bad;
-            //Debug.Log(Metronome.score);
-            //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(Color.red.r * 2, Color.red.g * 2, Color.red.b, 2.0f));
-            unMiss = true;
-        }
+                //Debug.Log("press");
+                if (threshHoldTimer >= tolerenceTemp / 8.0f && threshHoldTimer <= (tolerenceTemp / 8.0f * 6f))
+                {
+                    Debug.Log("GOOD");
+                    //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(goodHitColor.r * 1, goodHitColor.r * 1, goodHitColor.r, 1.0f));
+                    //nowColor = goodHitColor * 5.0f;
+                    good++;
+                    Metronome.good++;
 
+                }
+                else
+                {
+                    Debug.Log("BAD");
+                    //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(badHitColor.r * 1, badHitColor.r * 1, badHitColor.r, 1.0f));
+                    //nowColor = badHitColor * 2.0f;
+                    bad++;
+                    Metronome.bad++;
+
+                }
+                Metronome.score++; // 以後也用事件可能比較好
+                Metronome.combo += 1;
+
+                callPressContainer = DisCombo; // 按過就關掉了
+                                               //combo.text = "Combo : " + Metronome.combo + " total Good : " + good + " BAD : " + bad;
+                                               //Debug.Log(Metronome.score);
+                                               //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(Color.red.r * 2, Color.red.g * 2, Color.red.b, 2.0f));
+                unMiss = true;
+            }
+        }
+        else if (receiverNumber == 1)
+        {
+            if (threshHold == true && Input.GetButtonDown(playingButtons[receiverNumber]) && blue_degree > (((blue_index-6) * 60) - 30) && blue_degree < ((blue_index - 6) * 60) + 30)
+            {
+                //Debug.Log("press");
+                if (threshHoldTimer >= tolerenceTemp / 8.0f && threshHoldTimer <= (tolerenceTemp / 8.0f * 6f))
+                {
+                    Debug.Log("GOOD");
+                    //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(goodHitColor.r * 1, goodHitColor.r * 1, goodHitColor.r, 1.0f));
+                    //nowColor = goodHitColor * 5.0f;
+                    good++;
+                    Metronome.good++;
+
+                }
+                else
+                {
+                    Debug.Log("BAD");
+                    //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(badHitColor.r * 1, badHitColor.r * 1, badHitColor.r, 1.0f));
+                    //nowColor = badHitColor * 2.0f;
+                    bad++;
+                    Metronome.bad++;
+
+                }
+                Metronome.score++; // 以後也用事件可能比較好
+                Metronome.combo += 1;
+
+                callPressContainer = DisCombo; // 按過就關掉了
+                                               //combo.text = "Combo : " + Metronome.combo + " total Good : " + good + " BAD : " + bad;
+                                               //Debug.Log(Metronome.score);
+                                               //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(Color.red.r * 2, Color.red.g * 2, Color.red.b, 2.0f));
+                unMiss = true;
+            }
+        }
+       
     }
     void DisCombo()
     {
-        if (threshHold == false && Input.GetKeyDown(KeyCode.T))
+        if (threshHold == false && Input.GetButtonDown(playingButtons[receiverNumber]))
         {
             Metronome.combo = 0;
             Debug.Log("MISS");

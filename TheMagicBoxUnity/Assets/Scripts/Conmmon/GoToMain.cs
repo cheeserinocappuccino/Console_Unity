@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
 
-public class GotoMain : MonoBehaviour
+public class GoToMain : MonoBehaviour
 {
 
     public string jsonFileName;

@@ -1,0 +1,136 @@
+{
+  "everyNotes": [
+    {
+      "id": 0,
+      "measurement": 1,
+      "measure32": 29,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 2,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 1,
+      "measurement": 1,
+      "measure32": 31,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 11,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 2,
+      "measurement": 1,
+      "measure32": 32,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 3,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 3,
+      "measurement": 1,
+      "measure32": 34,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 4,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 4,
+      "measurement": 1,
+      "measure32": 46,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 9,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 5,
+      "measurement": 1,
+      "measure32": 47,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 6,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 6,
+      "measurement": 1,
+      "measure32": 62,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 8,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 7,
+      "measurement": 1,
+      "measure32": 62,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 12,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 8,
+      "measurement": 1,
+      "measure32": 76,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 6,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 9,
+      "measurement": 1,
+      "measure32": 77,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 14,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 10,
+      "measurement": 1,
+      "measure32": 82,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 11,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    }
+  ]
+}

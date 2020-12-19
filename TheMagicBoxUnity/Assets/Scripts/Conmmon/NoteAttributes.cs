@@ -22,6 +22,7 @@ public class NoteAttributes // : MonoBehaviour Json要讀的東西不能繼承�
     public string column1;
     public string column2;
     public string column3;
+    public Color noteColor;
 
     // 以下這些json沒有設定(因為要之後靠程式算) 所以不會被複寫
     public float Appear_Time = 0;

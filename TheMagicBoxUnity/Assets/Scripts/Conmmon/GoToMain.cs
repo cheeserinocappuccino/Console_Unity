@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.UI;
+
 public class GotoMain : MonoBehaviour
 {
 
@@ -10,7 +12,7 @@ public class GotoMain : MonoBehaviour
     public float songQuarterNoteTime;
     public AudioClip selectedSongAudio;
 
-
+    public Sprite[] gameBackgrounds;
     void Awake()
     {
         //nowplay.audio = this.GetComponent<AudioSource>().clip;

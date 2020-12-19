@@ -74,24 +74,64 @@ public class GameLevelMusic : MonoBehaviour
             int spawner0 = _noteJsonHeader.everyNotes[i].rowPos == 0 ? 1 : 0;
             int spawner1 = _noteJsonHeader.everyNotes[i].rowPos == 1 ? 1 : 0;
             int spawner2 = _noteJsonHeader.everyNotes[i].rowPos == 2 ? 1 : 0;
+            int spawner3 = _noteJsonHeader.everyNotes[i].rowPos == 3 ? 1 : 0;
+            int spawner4 = _noteJsonHeader.everyNotes[i].rowPos == 4 ? 1 : 0;
+            int spawner5 = _noteJsonHeader.everyNotes[i].rowPos == 5 ? 1 : 0;
+            int spawner6 = _noteJsonHeader.everyNotes[i].rowPos == 6 ? 1 : 0;
+            int spawner7 = _noteJsonHeader.everyNotes[i].rowPos == 7 ? 1 : 0;
+            int spawner8 = _noteJsonHeader.everyNotes[i].rowPos == 8 ? 1 : 0;
+            int spawner9 = _noteJsonHeader.everyNotes[i].rowPos == 9 ? 1 : 0;
+            int spawner10 = _noteJsonHeader.everyNotes[i].rowPos == 10 ? 1 : 0;
+            int spawner11 = _noteJsonHeader.everyNotes[i].rowPos == 11 ? 1 : 0;
 
-
-
-            bool[] temp = new bool[3];
+            bool[] temp = new bool[12];
+            // red
             temp[0] = spawner0 == 1 ? true : false;
             temp[1] = spawner1 == 1 ? true : false;
-            temp[2] = false;
+            temp[2] = spawner2 == 1 ? true : false;
+            temp[3] = spawner3 == 1 ? true : false;
+            temp[4] = spawner4 == 1 ? true : false;
+            temp[5] = spawner5 == 1 ? true : false;
+            // blue
+            temp[6] = spawner6 == 1 ? true : false;
+            temp[7] = spawner7 == 1 ? true : false;
+            temp[8] = spawner8 == 1 ? true : false;
+            temp[9] = spawner9 == 1 ? true : false;
+            temp[10] = spawner10 == 1 ? true : false;
+            temp[11] = spawner11 == 1 ? true : false;
+
 
             _noteJsonHeader.everyNotes[i].spawnners = temp;
 
-            // 之前雷射需要的參數，我想我這邊還不需要，先註解掉，但格式可以參考
-            /*if (_noteJsonHeader.everyNotes[i].attacktype[0] == "Laser")
+            bool isRed = false;
+            // 決定顏色
+            for(int red = 0; red < 6; red++)
             {
-                _noteJsonHeader.everyNotes[i].startPoint = 0.7f;
-                _noteJsonHeader.everyNotes[i].swipeDir = -1;
-                _noteJsonHeader.everyNotes[i].swipeSpeed = 0.7f; ;
-                _noteJsonHeader.everyNotes[i].periodInMeasure32 = 160;
-                _noteJsonHeader.everyNotes[i].warningTimeInMeasure32 = 96;
+                if(temp[red] == true)
+                {
+                    isRed = true;
+                }
+                
+            }
+
+            if(isRed == true)
+            {
+                _noteJsonHeader.everyNotes[i].noteColor = new Color(255, 0, 75, 255);
+            }
+            else
+            {
+                _noteJsonHeader.everyNotes[i].noteColor = new Color(0, 213, 255, 255);
+            }
+
+            /*Color Red = new Color(255, 0, 75, 255);
+            Color Blue = new Color(0, 213, 255, 255);*/
+
+
+            // 之前雷射需要的參數，我想我這邊還不需要，先註解掉，但格式可以參考
+            /*if (_noteJsonHeader.everyNotes[i].attacktype[0] == "Blue")
+            {
+                _noteJsonHeader.everyNotes[i].isBlue = true;
+             
             }*/
         }
         ForceSerialization();

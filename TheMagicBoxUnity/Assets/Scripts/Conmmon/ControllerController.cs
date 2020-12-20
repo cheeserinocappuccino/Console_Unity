@@ -58,11 +58,15 @@ public class ControllerController : MonoBehaviour
     public static int innerRing_Rawdata = 0;
     public static int outterRing_Rawdata = 0;
 
-    public static UInt16[] InnerRing_CalData;
-    public static UInt16[] OutterRing_CalData;
+    public static int LastlinnerRing_Rawdata = -1;
+    public static int LastoutterRing_Rawdata = -1;
 
-    public static int initialinnerRing_Rawdata = -1;
-    public static int initialoutterRing_Rawdata = -1;
+    public static float InnerRing_CalData = 0;
+    public static float OutterRing_CalData = 0;
+
+
+    // 定義差距超過多少才算是偵測到有轉過1023跟0之間
+    public static int overCenterDetection_value = 500;
 
     void Awake()
     {
@@ -75,8 +79,8 @@ public class ControllerController : MonoBehaviour
         /*connectionThread2.Start();
         readThread2.Start();*/
 
-        InnerRing_CalData = new UInt16[1024];
-        OutterRing_CalData = new UInt16[1024];
+        //InnerRing_CalData = new UInt16[1024];
+        //OutterRing_CalData = new UInt16[1024];
        
     }
 
@@ -112,7 +116,7 @@ public class ControllerController : MonoBehaviour
                         commandShow += commandBuffer[i].ToString();
 
                     }
-                    Debug.Log(commandShow);
+                    //Debug.Log(commandShow);
 
                     // now we know what command we received, Let's assign some task
 
@@ -127,12 +131,30 @@ public class ControllerController : MonoBehaviour
                             }
                         case 2: // 內圈
                             {
-                                if (initialinnerRing_Rawdata != -1)
+                                
+                                if (LastlinnerRing_Rawdata != -1)
                                 {
+                                    
+
                                     innerRing_Rawdata = 0;
                                     int MSB = commandBuffer[6] << 8; // because the data's maximun is 1024 so needed two byte to store, this line decode the sceond byte
                                     innerRing_Rawdata += MSB;
                                     innerRing_Rawdata += commandBuffer[7];
+
+                                    int diff = innerRing_Rawdata - LastlinnerRing_Rawdata;
+                                    
+                                    // 轉過1023跟0之間的時候 diff會異常地大，以下算式是發現這情況的時候所做的補償，讓程式知道1023跟0其實只差1
+                                    // 先把這個值叫做overCenterDetection_value
+                                    if(Mathf.Abs(diff) >= overCenterDetection_value)
+                                    {
+                                        int temp = (-1023 * (diff / Mathf.Abs(diff))) + diff;
+                                        diff = temp;
+                                    }
+                                    InnerRing_CalData += diff;
+
+                                    Debug.Log("內圈上一次偵測是 " + LastlinnerRing_Rawdata + " 現在轉到了 " + innerRing_Rawdata + " ，共差距 " + diff);
+                                    Debug.Log("現在指針 = " + InnerRing_CalData);
+                                    LastlinnerRing_Rawdata = innerRing_Rawdata;
 
                                     
                                 }
@@ -141,32 +163,24 @@ public class ControllerController : MonoBehaviour
                                     // if the innerRingdata == -1 means that it's first initial
                                     // so store the initial data to 歸0
                                     int MSB = commandBuffer[6] << 8;
-                                    initialinnerRing_Rawdata = 0;
-                                    initialinnerRing_Rawdata += MSB;
-                                    initialinnerRing_Rawdata += commandBuffer[7];
-                                    Debug.Log("Initial InnerRing = " + initialinnerRing_Rawdata);
+                                    LastlinnerRing_Rawdata = 0;
+                                    LastlinnerRing_Rawdata += MSB;
+                                    LastlinnerRing_Rawdata += commandBuffer[7];
+                            
 
-                                    // 硬把offset後的位置算進去
-                                    for (int i = 0; i < InnerRing_CalData.Length + initialinnerRing_Rawdata; i++)
-                                    {
-                                        float temp = i + initialinnerRing_Rawdata;
-                                        InnerRing_CalData[(int)Mathf.Repeat(temp, 1023)] = (UInt16) Mathf.Repeat(i,1023); // 這兩個等號跟index互換可以決定叫caldata[100]的時候是回傳實際的rawdata(200)還是0
-                                    }
-                                    
+                             
+                                    Debug.Log(innerRing_Rawdata + " <<<<<內圈的起始位置");
+
                                 }
-                                Debug.Log(InnerRing_CalData[0] + "<<<<<< should be 923");
-                                Debug.Log(innerRing_Rawdata);
+                        
+                                //Debug.Log(innerRing_Rawdata);
 
-                                // important notes
-                                // InnerRing_CalData[0] means that
-                                // When rawdata is 0, the calculated data know that it's has been moved 923
-                                // because we started from 100 and we rotated CL for 923, which lead the raw data get to the 0.
-
+                          
                                 break;
                             }
                         case 3: // 外圈
                             {
-                                if (initialoutterRing_Rawdata != -1)
+                                if (LastoutterRing_Rawdata != -1)
                                 {
                                     outterRing_Rawdata = 0;
                                     int MSB = commandBuffer[6] << 8; // because the data's maximun is 1024 so needed two byte to store, this line decode the sceond byte
@@ -178,17 +192,17 @@ public class ControllerController : MonoBehaviour
                                     // if the innerRingdata == -1 means that it's first initial
                                     // so store the initial data to 歸0
                                     int MSB = commandBuffer[6] << 8;
-                                    initialoutterRing_Rawdata = 0;
-                                    initialoutterRing_Rawdata += MSB;
-                                    initialoutterRing_Rawdata += commandBuffer[7];
-                                    Debug.Log("initialoutterRing_Rawdata = " + initialoutterRing_Rawdata);
+                                    LastoutterRing_Rawdata = 0;
+                                    LastoutterRing_Rawdata += MSB;
+                                    LastoutterRing_Rawdata += commandBuffer[7];
+                                    //Debug.Log("LastoutterRing_Rawdata = " + LastoutterRing_Rawdata);
 
                                     // 硬把offset後的位置算進去
                                    // OutterRing_CalData
 
                                 }
 
-                                Debug.Log(outterRing_Rawdata);
+                                //Debug.Log(outterRing_Rawdata);
 
                                 break;
                             }
@@ -308,5 +322,13 @@ public class ControllerController : MonoBehaviour
 
         }
 
+    }
+
+    void OnDestroy()
+    {
+        connectionThread.Abort();
+       
+        readThread.Abort();
+        Debug.Log("Stopped port thread");
     }
 }

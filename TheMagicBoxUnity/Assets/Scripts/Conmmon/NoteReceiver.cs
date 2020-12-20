@@ -47,20 +47,27 @@ public class NoteReceiver : MonoBehaviour
     int red_index = 0;
     int blue_index = 0;
 
-    // 由ControllerController負責存那兩個指針的資料到這裡
-    public static float red_degree = 45;
+    // 之後要跟ControllerController要資料
+    public static float red_degree = 0;
     public static float blue_degree = 0;
+    public GameObject blueGamepoint, redGamePoint;
+
+    ControllerController mainboard;
 
     void Awake()
     {
         _metronome = GameObject.FindGameObjectWithTag("GameController").GetComponent<Metronome>();
         this._metronome.TimeToPress += this.NoteThreshHoldOn;
-        
+
+        mainboard = GameObject.FindGameObjectWithTag("controllerController").GetComponent<ControllerController>();
+
     }
 
     void Update()
     {
-      
+        //blue_degree = Mathf.Repeat(ControllerController.InnerRing_CalData, 360);
+        blue_degree = ControllerController.InnerRing_CalData / (float)2.84444;
+        blueGamepoint.transform.rotation = Quaternion.Euler(0, 0, -blue_degree);
 
         if (threshHoldTimer > 0)
         {

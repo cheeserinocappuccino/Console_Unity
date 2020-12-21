@@ -146,6 +146,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 797260603}
+  fadeSpeed: 2
 --- !u!4 &218338004
 Transform:
   m_ObjectHideFlags: 0
@@ -266,6 +268,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1185043867}
+  fadeSpeed: 2
 --- !u!4 &455255854
 Transform:
   m_ObjectHideFlags: 0
@@ -387,6 +391,7 @@ RectTransform:
   - {fileID: 1263402270}
   - {fileID: 797260602}
   - {fileID: 1080573007}
+  - {fileID: 532194969}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -395,6 +400,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &532194968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532194969}
+  - component: {fileID: 532194971}
+  - component: {fileID: 532194970}
+  m_Layer: 5
+  m_Name: PerfectMissGood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &532194969
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532194968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 504245587}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &532194970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532194968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 881d917b417071643a4e1d43e28eb850, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &532194971
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532194968}
+  m_CullTransparentMesh: 0
 --- !u!1 &535707583
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +655,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1185043867}
+  fadeSpeed: 2
 --- !u!4 &893526317
 Transform:
   m_ObjectHideFlags: 0
@@ -621,6 +705,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1253822368}
+  fadeSpeed: 2
 --- !u!4 &922057208
 Transform:
   m_ObjectHideFlags: 0
@@ -938,6 +1024,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 420262971}
+  fadeSpeed: 2
 --- !u!4 &1226370826
 Transform:
   m_ObjectHideFlags: 0
@@ -1278,6 +1366,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1080573008}
+  fadeSpeed: 2
 --- !u!4 &1354129147
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,6 +1416,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1080573008}
+  fadeSpeed: 2
 --- !u!4 &1356682639
 Transform:
   m_ObjectHideFlags: 0
@@ -1443,6 +1535,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1253822368}
+  fadeSpeed: 2
 --- !u!4 &1518433527
 Transform:
   m_ObjectHideFlags: 0
@@ -1491,6 +1585,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1263402271}
+  fadeSpeed: 2
 --- !u!4 &1551164469
 Transform:
   m_ObjectHideFlags: 0
@@ -1750,6 +1846,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 797260603}
+  fadeSpeed: 2
 --- !u!4 &1954172257
 Transform:
   m_ObjectHideFlags: 0
@@ -1798,6 +1896,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 1263402271}
+  fadeSpeed: 2
 --- !u!4 &1974864802
 Transform:
   m_ObjectHideFlags: 0
@@ -2001,6 +2101,7 @@ MonoBehaviour:
   - Y
   blueGamepoint: {fileID: 1002274085}
   redGamePoint: {fileID: 535707583}
+  thePerfectGoodMiss: {fileID: 532194970}
 --- !u!114 &2014833620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,6 +2120,7 @@ MonoBehaviour:
   - Y
   blueGamepoint: {fileID: 1002274085}
   redGamePoint: {fileID: 535707583}
+  thePerfectGoodMiss: {fileID: 532194970}
 --- !u!1 &2074308587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,6 +2155,8 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 504245583}
   _metronome: {fileID: 2014833616}
+  theWarnLight: {fileID: 420262971}
+  fadeSpeed: 2
 --- !u!4 &2074308589
 Transform:
   m_ObjectHideFlags: 0

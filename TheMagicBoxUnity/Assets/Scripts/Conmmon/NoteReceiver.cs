@@ -62,7 +62,8 @@ public class NoteReceiver : MonoBehaviour
     public static float Outter_gamePointBrightTime = 0.2f;
     public static float Outter_gamePointBrightTime_Timer = 0;
 
-    
+    // combo字體
+    public Text thePerfectGoodMiss;
 
     void Awake()
     {
@@ -108,9 +109,9 @@ public class NoteReceiver : MonoBehaviour
         blueGamepoint.transform.rotation = Quaternion.Euler(0, 0, -blue_degree);
 
         // REd
-        red_degree = ControllerController.OutterRing_CalData / (float)35.555;
+        red_degree = ControllerController.OutterRing_CalData / (float)41.0f;
         red_degree = Mathf.Repeat(red_degree, 360);
-        redGamePoint.transform.rotation = Quaternion.Euler(0, 0, -red_degree);
+        redGamePoint.transform.rotation = Quaternion.Euler(0, 0, red_degree);
 
         //Debug.Log(blue_degree);
         if (threshHoldTimer > 0)
@@ -130,6 +131,8 @@ public class NoteReceiver : MonoBehaviour
                 Metronome.miss++;
                 unMiss = true;
                 Debug.Log("you Missed");
+                thePerfectGoodMiss.color = new Color(0.1f, 0.1f, 0.1f, 1.0f);
+                thePerfectGoodMiss.text = "MISS";
             }
             // 模擬input.getkeyDown
             innerRingPressed = false;
@@ -237,6 +240,8 @@ public class NoteReceiver : MonoBehaviour
                     //nowColor = goodHitColor * 5.0f;
                     good++;
                     Metronome.good++;
+                    thePerfectGoodMiss.color = new Color(0.0f, 1.0f, 0, 1.0f);
+                    thePerfectGoodMiss.text = "GOOD";
 
                 }
                 else
@@ -245,6 +250,8 @@ public class NoteReceiver : MonoBehaviour
                     //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(badHitColor.r * 1, badHitColor.r * 1, badHitColor.r, 1.0f));
                     //nowColor = badHitColor * 2.0f;
                     bad++;
+                    thePerfectGoodMiss.color = new Color(0.8f, 0, 0, 1.0f);
+                    thePerfectGoodMiss.text = "BAD";
                     Metronome.bad++;
 
                 }

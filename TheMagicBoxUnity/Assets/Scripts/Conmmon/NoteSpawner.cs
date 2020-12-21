@@ -13,16 +13,36 @@ public class NoteSpawner : MonoBehaviour
 
     [SerializeField]
     Metronome _metronome = null;
+
+    // 生成音符的警示
+    public Image theWarnLight;
+    private float warnLightBrightness = 0;
+    public float fadeSpeed = 2.0f;
+    
     void Awake()
     {
         _metronome = GameObject.FindGameObjectWithTag("GameController").GetComponent<Metronome>();
         this._metronome.SpawnNote += this.OnSpawn;
+
+
     }
 
 
     void Update()
     {
-
+        if (warnLightBrightness > 0)
+        {
+            warnLightBrightness -= Time.deltaTime * fadeSpeed;
+        }
+        else if (warnLightBrightness <= 0)
+        {
+            warnLightBrightness = 0;
+        }
+        
+        theWarnLight.color = new Color(1.0f, 1.0f, 1.0f, warnLightBrightness);
+        
+      
+        
     }
 
     public void OnSpawn(object sender, NotesEventArgs e)
@@ -31,6 +51,8 @@ public class NoteSpawner : MonoBehaviour
         {
             if (e.spawners[thisSpawnerNumber] == true) 
             {
+
+                warnLightBrightness = 1.0f;
                 // 生成音符的寫法
                 GameObject noteTemp = Instantiate(noteInstance);
                 noteTemp.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, thisSpawnerNumber * 60);
@@ -38,9 +60,17 @@ public class NoteSpawner : MonoBehaviour
                 noteTemp.transform.SetParent(canvas.transform);
                 noteTemp.transform.localPosition = new Vector3(0, 0, 0);
                 noteTemp.GetComponent<NoteInstantiate>().noteColor = e.color;
+            }// 專門給warnlight的
+            if (thisSpawnerNumber >= 6 && e.spawners[thisSpawnerNumber - 6] == true)
+            {
+                warnLightBrightness = 1.0f;
+            }
+            if (thisSpawnerNumber < 6 && e.spawners[thisSpawnerNumber + 6] == true)
+            {
+                warnLightBrightness = 1.0f;
             }
         }
-
+        
     }
 
 

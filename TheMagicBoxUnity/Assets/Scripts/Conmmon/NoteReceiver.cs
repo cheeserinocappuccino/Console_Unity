@@ -51,8 +51,18 @@ public class NoteReceiver : MonoBehaviour
     public static float red_degree = 0;
     public static float blue_degree = 0;
     public GameObject blueGamepoint, redGamePoint;
+    static bool innerRingPressed, OuterRingPressed = false;
 
     ControllerController mainboard;
+
+    // 按鈕亮起的時間
+    public static float Inner_gamePointBrightTime = 0.2f;
+    public static float Inner_gamePointBrightTime_Timer = 0;
+
+    public static float Outter_gamePointBrightTime = 0.2f;
+    public static float Outter_gamePointBrightTime_Timer = 0;
+
+    
 
     void Awake()
     {
@@ -65,10 +75,44 @@ public class NoteReceiver : MonoBehaviour
 
     void Update()
     {
+        // 藍按鈕亮起
+        if (Inner_gamePointBrightTime_Timer > 0)
+        {
+            Inner_gamePointBrightTime_Timer -= Time.deltaTime;
+            blueGamepoint.GetComponent<Image>().color = new Color(0, 1.0f, 1.0f, 1.0f);
+            //Debug.Log("???");
+        }
+        else if (Inner_gamePointBrightTime_Timer <= 0)
+        {
+            Inner_gamePointBrightTime_Timer = 0;
+            blueGamepoint.GetComponent<Image>().color = new Color(0, 0.6f, 1.0f, 0.6f);
+
+        }
+        // 紅按鈕亮起
+        if (Outter_gamePointBrightTime_Timer > 0)
+        {
+            Outter_gamePointBrightTime_Timer -= Time.deltaTime;
+            redGamePoint.GetComponent<Image>().color = new Color(1.0f, 0, 0, 1.0f);
+            //Debug.Log("???");
+        }
+        else if (Outter_gamePointBrightTime_Timer <= 0)
+        {
+            Outter_gamePointBrightTime_Timer = 0;
+            redGamePoint.GetComponent<Image>().color = new Color(1.0f, 0, 0, 0.6f);
+
+        }
+
         //blue_degree = Mathf.Repeat(ControllerController.InnerRing_CalData, 360);
         blue_degree = ControllerController.InnerRing_CalData / (float)2.84444;
+        blue_degree = Mathf.Repeat(blue_degree, 360);
         blueGamepoint.transform.rotation = Quaternion.Euler(0, 0, -blue_degree);
 
+        // REd
+        red_degree = ControllerController.OutterRing_CalData / (float)35.555;
+        red_degree = Mathf.Repeat(red_degree, 360);
+        redGamePoint.transform.rotation = Quaternion.Euler(0, 0, -red_degree);
+
+        //Debug.Log(blue_degree);
         if (threshHoldTimer > 0)
         {
             threshHoldTimer -= Time.deltaTime;
@@ -87,17 +131,17 @@ public class NoteReceiver : MonoBehaviour
                 unMiss = true;
                 Debug.Log("you Missed");
             }
-
+            // 模擬input.getkeyDown
+            innerRingPressed = false;
+            OuterRingPressed = false;
         }
-        //slider.value = threshHoldTimer;
-        //b.text = threshHold == true ? "★" : "☆";
+   
 
         callPressContainer?.Invoke();
-        //nowColor = Vector4.Lerp(nowColor, normalColor, Time.deltaTime * 5.0f);
+     
+
 
         
-        //Press();
-
     }
     void NoteThreshHoldOn(object sender, NotesEventArgs e)
     {
@@ -178,7 +222,12 @@ public class NoteReceiver : MonoBehaviour
 
         if (receiverNumber == 0)
         {
-            if (threshHold == true && Input.GetButtonDown(playingButtons[receiverNumber]) && red_degree > ((red_index * 60) -30) && red_degree < (red_index * 60) + 30)
+            
+               
+            int notePosTemp = 360 - (((red_index + 1) * 60 - 60));
+            
+            //Debug.Log(red_degree+1 + ">" + Mathf.Repeat(notePosTemp - 30, 329) + "");
+            if (threshHold == true && OuterRingPressed && red_degree + 1 >= Mathf.Repeat(notePosTemp - 30, 329) && Mathf.Repeat(red_degree, 330) < Mathf.Repeat(notePosTemp + 30, 360))
             {
                 //Debug.Log("press");
                 if (threshHoldTimer >= tolerenceTemp / 8.0f && threshHoldTimer <= (tolerenceTemp / 8.0f * 6f))
@@ -211,9 +260,11 @@ public class NoteReceiver : MonoBehaviour
         }
         else if (receiverNumber == 1)
         {
-            if (threshHold == true && Input.GetButtonDown(playingButtons[receiverNumber]) && blue_degree > (((blue_index-6) * 60) - 30) && blue_degree < ((blue_index - 6) * 60) + 30)
+            int notePosTemp = 360 - (((blue_index - 5) * 60 - 60));
+            //Debug.Log(blue_degree+1 + ">" + Mathf.Repeat(notePosTemp - 30, 329) + "");
+            if (threshHold == true && innerRingPressed &&  blue_degree+1 >= Mathf.Repeat(notePosTemp - 30,329) && Mathf.Repeat(blue_degree,330) < Mathf.Repeat(notePosTemp+30,360))
             {
-                //Debug.Log("press");
+                Debug.Log("pressBlue");
                 if (threshHoldTimer >= tolerenceTemp / 8.0f && threshHoldTimer <= (tolerenceTemp / 8.0f * 6f))
                 {
                     Debug.Log("GOOD");
@@ -246,10 +297,17 @@ public class NoteReceiver : MonoBehaviour
     }
     void DisCombo()
     {
-        if (threshHold == false && Input.GetButtonDown(playingButtons[receiverNumber]))
+        if(receiverNumber == 0 && threshHold == false && OuterRingPressed)
         {
             Metronome.combo = 0;
             Debug.Log("MISS");
+            OuterRingPressed = false;
+        }
+        else if (receiverNumber == 1 &&threshHold == false && innerRingPressed)
+        {
+            Metronome.combo = 0;
+            Debug.Log("MISS");
+            innerRingPressed = false;
             //combo.text = "Combo : " + Metronome.combo + " total Good : " + good + " BAD : " + bad;
 
         }
@@ -257,6 +315,18 @@ public class NoteReceiver : MonoBehaviour
         
     }
 
+    // 因為接收指令的執行續跟unity不一樣，會有時差，所以讓接收指令那邊呼叫unity執行續的東西，讓innerRingPressed加入unity執行續就能做到類似input.getkeyDOWN只開一幀的效果
+    public static void InnerRingPressed_ThreadHandle()
+    {
+        innerRingPressed = true;
+        Inner_gamePointBrightTime_Timer = Inner_gamePointBrightTime;
+    }
+
+    public static void OutterRingPressed_ThreadHandle()
+    {
+        OuterRingPressed = true;
+        Outter_gamePointBrightTime_Timer = Outter_gamePointBrightTime;
+    }
 }
 
 

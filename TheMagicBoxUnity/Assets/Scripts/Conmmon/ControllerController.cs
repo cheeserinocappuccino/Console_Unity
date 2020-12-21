@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using System.Data;
 using System.Threading.Tasks;
+using System;
 
 
 // note: pls use another thread to do serial stuff
@@ -68,12 +69,17 @@ public class ControllerController : MonoBehaviour
     // 定義差距超過多少才算是偵測到有轉過1023跟0之間
     public static int overCenterDetection_value = 500;
 
+    // 偵測按鈕有被按下
+    public static bool InnerRingPressed = false;
+
+    
+
     void Awake()
     {
        
         port1 = new SerialPort(useport, baudrate, parity, databits, stopbits);
-
-        connectionThread.Start();
+        port1.Open();
+        //connectionThread.Start();
         readThread.Start();
 
         /*connectionThread2.Start();
@@ -84,6 +90,10 @@ public class ControllerController : MonoBehaviour
        
     }
 
+     void Update()
+    {
+        
+    }
 
     // run a another thread to prevent performance issue
     // Other's example often join this thread back to the main thread, but we are kinda polling commands and we need to always polling
@@ -92,7 +102,8 @@ public class ControllerController : MonoBehaviour
     {
         while (true)
         {
-            
+            InnerRingPressed = false;
+
             try
             {
                 // First, find the start command, in this case I like to use 77;
@@ -152,8 +163,8 @@ public class ControllerController : MonoBehaviour
                                     }
                                     InnerRing_CalData += diff;
 
-                                    Debug.Log("內圈上一次偵測是 " + LastlinnerRing_Rawdata + " 現在轉到了 " + innerRing_Rawdata + " ，共差距 " + diff);
-                                    Debug.Log("現在指針 = " + InnerRing_CalData);
+                                    //Debug.Log("內圈上一次偵測是 " + LastlinnerRing_Rawdata + " 現在轉到了 " + innerRing_Rawdata + " ，共差距 " + diff);
+                                    //Debug.Log("現在指針 = " + InnerRing_CalData);
                                     LastlinnerRing_Rawdata = innerRing_Rawdata;
 
                                     
@@ -186,6 +197,21 @@ public class ControllerController : MonoBehaviour
                                     int MSB = commandBuffer[6] << 8; // because the data's maximun is 1024 so needed two byte to store, this line decode the sceond byte
                                     outterRing_Rawdata += MSB;
                                     outterRing_Rawdata += commandBuffer[7];
+
+                                    int diff = outterRing_Rawdata - LastoutterRing_Rawdata;
+
+                                    // 轉過1023跟0之間的時候 diff會異常地大，以下算式是發現這情況的時候所做的補償，讓程式知道1023跟0其實只差1
+                                    // 先把這個值叫做overCenterDetection_value
+                                    if (Mathf.Abs(diff) >= overCenterDetection_value)
+                                    {
+                                        int temp = (-1023 * (diff / Mathf.Abs(diff))) + diff;
+                                        diff = temp;
+                                    }
+                                    OutterRing_CalData += diff;
+
+                                    //Debug.Log("內圈上一次偵測是 " + LastlinnerRing_Rawdata + " 現在轉到了 " + innerRing_Rawdata + " ，共差距 " + diff);
+                                    //Debug.Log("現在指針 = " + InnerRing_CalData);
+                                    LastoutterRing_Rawdata = outterRing_Rawdata;
                                 }
                                 else //起始設定
                                 {
@@ -204,6 +230,27 @@ public class ControllerController : MonoBehaviour
 
                                 //Debug.Log(outterRing_Rawdata);
 
+                                break;
+                            }
+                        case 4: // 內圈按鈕
+                            {
+                                
+                                int PressedCommand = commandBuffer[7];
+                                if(PressedCommand >= 1)
+                                {
+                                   NoteReceiver.InnerRingPressed_ThreadHandle();
+                                   // Debug.Log("iNNERrING pRESSED");
+                                }
+                                break;
+                            }
+                        case 5: // 外圈按鈕
+                            {
+                                int PressedCommand = commandBuffer[7];
+                                if (PressedCommand >= 1)
+                                {
+                                    NoteReceiver.OutterRingPressed_ThreadHandle();
+                                     //Debug.Log("OutterING pRESSED");
+                                }
                                 break;
                             }
                         default:
@@ -289,7 +336,7 @@ public class ControllerController : MonoBehaviour
             }
             catch
             {
-                //Debug.Log("Failed Open Port1 ");
+                Debug.Log("Failed Open Port1 ");
                
 
 
@@ -314,7 +361,7 @@ public class ControllerController : MonoBehaviour
             }
             catch
             {
-               // Debug.Log("Failed Open Port2 ");
+                Debug.Log("Failed Open Port2 ");
 
 
 
@@ -327,8 +374,9 @@ public class ControllerController : MonoBehaviour
     void OnDestroy()
     {
         connectionThread.Abort();
-       
+
         readThread.Abort();
+        port1.Close();
         Debug.Log("Stopped port thread");
     }
 }

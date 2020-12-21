@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useport: COM4
-  baudrate: 115200
+  baudrate: 2000000
   databits: 8
   stopbits: 1
   parity: 0
@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6473124, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9828737, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

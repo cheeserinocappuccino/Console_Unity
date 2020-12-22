@@ -2789,7 +2789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowplay: {fileID: 0}
   LevelAudioSource: {fileID: 0}
-  backgrounds: {fileID: 0}
+  background: {fileID: 1657306759}
   lastBeat: 0
   quarterNoteTime: 0
   totalBeatCount: 0

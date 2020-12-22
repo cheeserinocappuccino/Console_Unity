@@ -10,8 +10,8 @@ public class Metronome : MonoBehaviour
     public AudioSource LevelAudioSource;
 
     private GoToMain gotoMain;
-    public Gif backgrounds;
-
+    //public Gif backgrounds;
+    public Image background;
  
 
     public event System.EventHandler<NotesEventArgs> SpawnNote;
@@ -77,7 +77,7 @@ public class Metronome : MonoBehaviour
         nowplay.GameLevelMusicInstantiate();
 
         // 進遊戲時拿Gotomain改背景
-        backgrounds.allImages[0] = gotoMain.gameBackgrounds;
+        background.sprite = gotoMain.gameBackgrounds;
 
         quarterNoteTime = gotoMain.songQuarterNoteTime;
 

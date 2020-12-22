@@ -2319,7 +2319,6 @@ GameObject:
   - component: {fileID: 1657306757}
   - component: {fileID: 1657306760}
   - component: {fileID: 1657306759}
-  - component: {fileID: 1657306758}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2346,24 +2345,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1657306758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657306756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf9df875f9104e64596becc7e576a8cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allImages:
-  - {fileID: 21300000, guid: ff151df5e3532f848a51c17f41fa33c3, type: 3}
-  - {fileID: 21300000, guid: 7b610af26ce7cf34182e62e8771b324f, type: 3}
-  - {fileID: 21300000, guid: e6b2b8d6a19a74c4cb503fa28057d926, type: 3}
-  - {fileID: 21300000, guid: f1d24edd27e5e8344b4cb3a9f8895284, type: 3}
-  xFramePerSeconds: 12
 --- !u!114 &1657306759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2808,7 +2789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowplay: {fileID: 0}
   LevelAudioSource: {fileID: 0}
-  backgrounds: {fileID: 1657306758}
+  backgrounds: {fileID: 0}
   lastBeat: 0
   quarterNoteTime: 0
   totalBeatCount: 0
@@ -3094,6 +3075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goto_Main_debug
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605609049133695398, guid: ae2d9ac2eeeebed46a64bf00e1826871,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae2d9ac2eeeebed46a64bf00e1826871, type: 3}

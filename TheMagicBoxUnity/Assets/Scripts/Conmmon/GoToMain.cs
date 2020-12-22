@@ -12,7 +12,7 @@ public class GoToMain : MonoBehaviour
     public float songQuarterNoteTime;
     public AudioClip selectedSongAudio;
 
-    public Sprite[] gameBackgrounds;
+    public Sprite gameBackgrounds;
     void Awake()
     {
         //nowplay.audio = this.GetComponent<AudioSource>().clip;

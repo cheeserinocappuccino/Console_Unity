@@ -9,10 +9,11 @@ public class ResultManage : MonoBehaviour
     public int goodNum;
     public int missNum;*/
 
-    private int[] nums = new int[3];
+    private int[] nums = new int[4];
     public Text perfectText;
     public Text goodText;
     public Text missText;
+    public Text ComboText;
     //public Slider ultimateSlider;
     //public GameObject bossImage;
     //public GameObject bossRotateDummyTarget;
@@ -66,6 +67,7 @@ public class ResultManage : MonoBehaviour
         perfectText.text = nums[0].ToString();
         goodText.text = nums[1].ToString();
         missText.text = nums[2].ToString();
+        ComboText.text = nums[3].ToString();
         if (doneCounting)
         {
             
@@ -122,6 +124,16 @@ public class ResultManage : MonoBehaviour
             yield return new WaitForSeconds(0.5f - addingSpeedCurve.Evaluate(nowTimePos));
         }
         Debug.Log("add miss done");
+
+        // combo
+        while (nums[3] < parseGuy.combo)
+        {
+            float nowTimePos = (1.0f / parseGuy.missNum) * (nums[2]);
+
+            nums[3] += 1;
+            yield return new WaitForSeconds(0.5f - addingSpeedCurve.Evaluate(nowTimePos));
+        }
+        Debug.Log("add combo done");
 
         yield return new WaitForSeconds(3.0f);
         doneCounting = true;

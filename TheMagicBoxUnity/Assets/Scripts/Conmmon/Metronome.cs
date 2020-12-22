@@ -77,7 +77,7 @@ public class Metronome : MonoBehaviour
         nowplay.GameLevelMusicInstantiate();
 
         // 進遊戲時拿Gotomain改背景
-        backgrounds.allImages = gotoMain.gameBackgrounds;
+        backgrounds.allImages[0] = gotoMain.gameBackgrounds;
 
         quarterNoteTime = gotoMain.songQuarterNoteTime;
 

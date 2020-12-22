@@ -1235,7 +1235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OuterRing: {fileID: 701219176}
   InnerRing: {fileID: 1982767381}
-  GetInSelectsong: 0
   Aerobat_frame: {fileID: 871468615}
   chooseSong_background: {fileID: 686495044}
   fadeoutSpeed: 0.35
@@ -1245,9 +1244,9 @@ MonoBehaviour:
   fadeINNNSpeed: 0.5
   nowsongIndex: 0
   allSongNames:
-  - A
-  - B
-  - C
+  - Alone_Amo.json
+  - Rain_Amo.json
+  - Vampire_Amo.json
   allSongDifficulty: 010000000200000003000000
   difficultySprite:
   - {fileID: 21300000, guid: ad619bc4273ce5a4cbc6d1c2bd96912d, type: 3}
@@ -1309,6 +1308,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 04216b90dddd9ba4eae25e1d94ef377b, type: 3}
   - {fileID: 8300000, guid: 0c71bd5ffe3ca784bb9fe31ab0f9e882, type: 3}
   - {fileID: 8300000, guid: 6d4305cc31a846f4483455a5c010aed7, type: 3}
+  allSongTempo:
+  - 0.0093333
+  - 0.01
+  - 0.01006
+  allSongAudio:
+  - {fileID: 8300000, guid: ecc2db0246424a947a933584f680b372, type: 3}
+  - {fileID: 8300000, guid: bd609123c7471f945b823d0f78f6cfa1, type: 3}
+  - {fileID: 8300000, guid: 275c7149c44ad4c459ac0a6c261b5c3a, type: 3}
+  allSongBackground:
+  - {fileID: 21300000, guid: d262657af9c5ba14ead5d9bd2ad67623, type: 3}
+  - {fileID: 21300000, guid: 4fd108fbcd8f5ab40894a761fe1ce646, type: 3}
+  - {fileID: 21300000, guid: ff151df5e3532f848a51c17f41fa33c3, type: 3}
 --- !u!4 &447987410
 Transform:
   m_ObjectHideFlags: 0
@@ -3172,12 +3183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1786bced0bbca2a43b1e1fbb2824d2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useport: COM4
+  useport: COM7
   baudrate: 2000000
   databits: 8
   stopbits: 1
   parity: 0
-  useport2: COM10
+  useport2: COM3
   baudrate2: 2000000
   databits2: 8
   stopbits2: 1
@@ -3195,6 +3206,133 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2093823393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093823395}
+  - component: {fileID: 2093823394}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2093823394
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093823393}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1f5261142150e884ab044f5bd6138e60, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.09
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2093823395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093823393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 593.99457, y: 391.72903, z: 69407.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104485484
 GameObject:
@@ -3246,3 +3384,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &2226952752768703532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2226952752768703534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 898.25793, y: 319.60312, z: 2197.5466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2226952752768703534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2226952752768703532}
+  - component: {fileID: 2226952752768703535}
+  m_Layer: 0
+  m_Name: Goto_Main_debug
+  m_TagString: GoToMain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2226952752768703535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2226952752768703534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3195458b12b9d489b1217207e737e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFileName: Vampire_Amo.json
+  songQuarterNoteTime: 0.0106
+  selectedSongAudio: {fileID: 8300000, guid: 275c7149c44ad4c459ac0a6c261b5c3a, type: 3}
+  gameBackgrounds: {fileID: 0}

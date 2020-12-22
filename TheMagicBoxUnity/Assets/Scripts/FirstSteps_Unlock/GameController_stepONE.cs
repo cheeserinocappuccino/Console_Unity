@@ -85,6 +85,13 @@ public class GameController_stepONE : MonoBehaviour
     // 接收確認選歌的訊息
     static bool TBChooseSongOk = false;
 
+    // 選歌實際動作
+    GoToMain gotoMainman;
+    public float[] allSongTempo;
+
+    public AudioClip[] allSongAudio;
+    public Sprite[] allSongBackground;
+
     void Start()
     {
         OuterRingFill = OuterRing.GetComponent<DoubleSides_FillAmount>();
@@ -94,6 +101,8 @@ public class GameController_stepONE : MonoBehaviour
         planetRotationGroup = GameObject.FindGameObjectWithTag("planetRotationGroup");
         FadeOutWhileGetInSelectsong_group = GameObject.FindGameObjectsWithTag("FadeOutWhileGetInSelectsong");
         FadeInWhileGetInSelectsong_group = GameObject.FindGameObjectsWithTag("FadeInWhileGetInSelectsong");
+
+        gotoMainman = GameObject.FindGameObjectWithTag("GoToMain").GetComponent<GoToMain>();
 
         starChangeCalculatedSpeed = 1 / starChangeFramesPerSecond;
         InnerRingFill.SetFill(0.6f, 0.0f);
@@ -244,6 +253,12 @@ public class GameController_stepONE : MonoBehaviour
         {
             // 讓觸控板回去背景圖
             //ControllerController.TBSend_GoBackGround();
+
+            // json檔名
+            gotoMainman.jsonFileName = allSongNames[nowsongIndex];
+            gotoMainman.songQuarterNoteTime = allSongTempo[nowsongIndex];
+            gotoMainman.selectedSongAudio = allSongAudio[nowsongIndex];
+            gotoMainman.gameBackgrounds = allSongBackground[nowsongIndex];
 
 
             Debug.Log("馬上進到遊戲");

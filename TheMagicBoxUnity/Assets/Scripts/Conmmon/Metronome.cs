@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Metronome : MonoBehaviour
 {
     [SerializeField]
@@ -40,12 +41,20 @@ public class Metronome : MonoBehaviour
     private float playtime = 0;
     // 分數
     public static int score = 0;
-    public static int combo = 0;
-    public static int bad = 0;
-    public static int good = 0;
-    public static int miss = 0;
+    public static int combo = 100;
+    public static int bad = 100;
+    public static int good = 100;
+    public static int miss = 100;
 
+    public Text theCombotext;
     // end  --------------- 從舊的metronome拿來的 ----------------
+
+    // 結束遊戲
+    private Image fadingImage;
+    public NumParseGuy numParseGuy;
+
+
+
     void Awake()
     {
 
@@ -82,12 +91,25 @@ public class Metronome : MonoBehaviour
         {
             Debug.Log("沒有AudioSource");
         }
-        
+
+        try
+        {
+            fadingImage = GameObject.FindGameObjectWithTag("Fade").GetComponent<Image>();
+            // Fade效果
+            fadingImage.gameObject.GetComponent<Animator>().SetTrigger("FadeIn");
+        }
+        catch
+        {
+            Debug.Log("沒有fadingimage");
+        }
+
+        DontDestroyOnLoad(numParseGuy);
+
     }
 
     void Start()
     {
-        
+       
 
 
     }
@@ -99,7 +121,13 @@ public class Metronome : MonoBehaviour
         
         
         SummonNotes();
-        
+        GiveItToMe();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(IEndGame());
+        }
+        theCombotext.text = combo.ToString();
     }
 
     public void SummonNotes()
@@ -197,21 +225,31 @@ public class Metronome : MonoBehaviour
 
     IEnumerator IEndGame()
     {
-
-        /*DontDestroyOnLoad(fadingImage.transform.parent.gameObject);
+        // Debug.Log("大絕計量 = " + nowUltimateNum);
+        DontDestroyOnLoad(fadingImage.transform.parent.gameObject);
         
-        Debug.Log(LevelAudioSource.volume + "audioVolume");
+        //Debug.Log(LevelAudioSource.volume + "audioVolume");
         while (LevelAudioSource.volume > 0.005f)
         {
             LevelAudioSource.volume -= 0.0005f;
-            Debug.Log(LevelAudioSource.volume);
+            //Debug.Log(LevelAudioSource.volume);
             yield return new WaitForSeconds(0.1f);
         }
 
         fadingImage.GetComponent<Animator>().SetTrigger("FadeOut");
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Result");*/
+        SceneManager.LoadScene("End_step3");
+    }
 
-        yield return new WaitForSeconds(100.0f);
+    public void GiveItToMe()
+    {
+        numParseGuy.perfectNum = good;
+        numParseGuy.goodNum = bad;
+        numParseGuy.missNum = miss;
+        if(combo > numParseGuy.combo)
+        {
+            numParseGuy.combo = combo;
+        }
+        
     }
 }

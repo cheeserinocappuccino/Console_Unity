@@ -82,8 +82,12 @@ public class ControllerController : MonoBehaviour
         //connectionThread.Start();
         readThread.Start();
 
-        /*connectionThread2.Start();
-        readThread2.Start();*/
+
+        port2 = new SerialPort(useport2, baudrate2, parity2, databits2, stopbits2);
+        port2.Open();
+
+        //connectionThread2.Start();
+        readThread2.Start();
 
         //InnerRing_CalData = new UInt16[1024];
         //OutterRing_CalData = new UInt16[1024];
@@ -238,7 +242,26 @@ public class ControllerController : MonoBehaviour
                                 int PressedCommand = commandBuffer[7];
                                 if(PressedCommand >= 1)
                                 {
-                                   NoteReceiver.InnerRingPressed_ThreadHandle();
+                                    try
+                                    {
+                                        NoteReceiver.InnerRingPressed_ThreadHandle();
+                                        
+                                    }
+                                    catch
+                                    {
+                                        Debug.Log("沒有NoteReceiver，你應該是在選歌");
+                                    }
+
+                                    try
+                                    {
+                                        GameController_stepONE.InnerRingPressed_ThreadHandle();
+                                        GameController_stepONE.GetInSelectingSong();
+                                    }
+                                    catch
+                                    {
+                                        Debug.Log("沒有GameController_stepONE，你應該是在遊戲");
+                                    }
+
                                    // Debug.Log("iNNERrING pRESSED");
                                 }
                                 break;
@@ -248,11 +271,29 @@ public class ControllerController : MonoBehaviour
                                 int PressedCommand = commandBuffer[7];
                                 if (PressedCommand >= 1)
                                 {
-                                    NoteReceiver.OutterRingPressed_ThreadHandle();
-                                     //Debug.Log("OutterING pRESSED");
+                                    try
+                                    {
+                                        NoteReceiver.OutterRingPressed_ThreadHandle();
+                                    }
+                                    catch
+                                    {
+                                        Debug.Log("沒有NoteReceiver，你應該是在選歌");
+                                    }
+
+                                    try
+                                    {
+                                        GameController_stepONE.OutterRingPressed_ThreadHandle();
+                                    }
+                                    catch
+                                    {
+                                        Debug.Log("沒有GameController_stepONE，你應該是在遊戲");
+                                    }
+
+                                    //Debug.Log("OutterING pRESSED");
                                 }
                                 break;
                             }
+                        
                         default:
                             {
                                 break;
@@ -291,7 +332,7 @@ public class ControllerController : MonoBehaviour
                     commandShow2 += commandBuffer2[0];
 
                     // and read the remain data, because I already determined that I'm using 8 byte data length, I know I need to read 7 more byte;
-                    port1.Read(commandBuffer2, 1, 7);
+                    port2.Read(commandBuffer2, 1, 7);
 
                     // get those data into a string for a easy debug
                     for (int i = 1; i < commandBuffer2.Length; i++)
@@ -306,15 +347,46 @@ public class ControllerController : MonoBehaviour
 
                     // 待做----//
 
+                    switch (commandBuffer2[5])
+                    {
+                        case 6: //確認選歌
+                            {
+                                int chooseSongokCommand = commandBuffer2[7];
+                                if (chooseSongokCommand >= 1)
+                                {
+
+
+                                    try
+                                    {
+                                        GameController_stepONE.CanGoInGame_ThreadHandle();
+                                    }
+                                    catch
+                                    {
+                                        Debug.Log("沒有GameController_stepONE，你應該是在遊戲");
+                                    }
+
+
+
+                                    Debug.Log("收到進遊戲的指令");
+                                }
+                                Debug.Log("收到進遊戲的指令");
+                                break;
+                            }
+                        default:
+                            {
+                                break;
+                            }
+                    }
+
                     // a response should be asigned above through a delegate, so we can now clear the buffer for our next incommin command
-                    commandBuffer = new byte[8];
+                    commandBuffer2 = new byte[8];
                 }
 
             }
             catch
             {
                 //Debug.Log("reading port2 error");
-                port1Reconnecting = true;
+                port2Reconnecting = true;
             }
         }
 
@@ -356,7 +428,7 @@ public class ControllerController : MonoBehaviour
 
                 port2.Open();
                 //Debug.Log("port2 opened");
-                port1Reconnecting = false;
+                port2Reconnecting = false;
 
             }
             catch
@@ -371,12 +443,46 @@ public class ControllerController : MonoBehaviour
 
     }
 
+    // ----------送指令給觸控板 ----------
+    // 顯示"選歌"字樣
+    public static void TBSend_ShowSelectSongText()
+    {
+        byte[] SSByte = new byte[] { 5, 2, 2, 2, 2, 2, 2, 2 };
+        port2.Write(SSByte, 0, 8);
+    }
+    // 進入選歌確認滑動模式
+    public static void TBSend_EnterChooseSongSlide()
+    {
+        byte[] CCByte = new byte[] { 7, 2, 2, 2, 2, 2, 2, 2 };
+        port2.Write(CCByte, 0, 8);
+    }
+    // 進入遊戲開始，顯示背景圖"OwO"
+    public static void TBSend_GoBackGround()
+    {
+        byte[] CCByte = new byte[] { 6, 2, 2, 2, 2, 2, 2, 2 };
+        port2.Write(CCByte, 0, 8);
+    }
+
+    // 最重要的送觸控板指令
+    public static void TBSend_Touch(byte[] touchboardCommand)
+    {
+        byte[] CCByte = touchboardCommand;
+        port2.Write(CCByte, 0, 8);
+    }
+
+
+    // 關遊戲的時候斷開連結
     void OnDestroy()
     {
         connectionThread.Abort();
 
         readThread.Abort();
         port1.Close();
+
+        connectionThread2.Abort();
+        readThread2.Abort();
+        port2.Close();
+
         Debug.Log("Stopped port thread");
     }
 }

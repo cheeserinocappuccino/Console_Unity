@@ -9,6 +9,8 @@ TagManager:
   - planetRotationGroup
   - FadeInWhileGetInSelectsong
   - GoToMain
+  - Fade
+  - parseGuy
   layers:
   - Default
   - TransparentFX

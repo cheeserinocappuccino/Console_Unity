@@ -63,7 +63,10 @@ public class NoteReceiver : MonoBehaviour
     public static float Outter_gamePointBrightTime_Timer = 0;
 
     // combo字體
-    public Text thePerfectGoodMiss;
+    //public Text //thePerfectGoodMiss;
+
+    // combo特效
+    public Image[] hitEffects;
 
     void Awake()
     {
@@ -109,9 +112,9 @@ public class NoteReceiver : MonoBehaviour
         blueGamepoint.transform.rotation = Quaternion.Euler(0, 0, -blue_degree);
 
         // REd
-        red_degree = ControllerController.OutterRing_CalData / (float)41.0f;
+        red_degree = -(ControllerController.OutterRing_CalData / (float)41.0f);
         red_degree = Mathf.Repeat(red_degree, 360);
-        redGamePoint.transform.rotation = Quaternion.Euler(0, 0, red_degree);
+        redGamePoint.transform.rotation = Quaternion.Euler(0, 0, -red_degree);
 
         //Debug.Log(blue_degree);
         if (threshHoldTimer > 0)
@@ -131,8 +134,8 @@ public class NoteReceiver : MonoBehaviour
                 Metronome.miss++;
                 unMiss = true;
                 Debug.Log("you Missed");
-                thePerfectGoodMiss.color = new Color(0.1f, 0.1f, 0.1f, 1.0f);
-                thePerfectGoodMiss.text = "MISS";
+                //thePerfectGoodMiss.color = new Color(0.1f, 0.1f, 0.1f, 1.0f);
+                //thePerfectGoodMiss.text = "MISS";
             }
             // 模擬input.getkeyDown
             innerRingPressed = false;
@@ -240,8 +243,11 @@ public class NoteReceiver : MonoBehaviour
                     //nowColor = goodHitColor * 5.0f;
                     good++;
                     Metronome.good++;
-                    thePerfectGoodMiss.color = new Color(0.0f, 1.0f, 0, 1.0f);
-                    thePerfectGoodMiss.text = "GOOD";
+                    //thePerfectGoodMiss.color = new Color(0.0f, 1.0f, 0, 1.0f);
+                    //thePerfectGoodMiss.text = "GOOD";
+
+                    // 打擊特效
+                    hitEffects[red_index].GetComponent<HitEffect>().CallHit(new Color(0, 1, 0, 1));
 
                 }
                 else
@@ -250,9 +256,12 @@ public class NoteReceiver : MonoBehaviour
                     //_reactingBarMaterial.SetColor("_EmissiveColor", new Vector4(badHitColor.r * 1, badHitColor.r * 1, badHitColor.r, 1.0f));
                     //nowColor = badHitColor * 2.0f;
                     bad++;
-                    thePerfectGoodMiss.color = new Color(0.8f, 0, 0, 1.0f);
-                    thePerfectGoodMiss.text = "BAD";
+                    //thePerfectGoodMiss.color = new Color(0.8f, 0, 0, 1.0f);
+                    //thePerfectGoodMiss.text = "BAD";
                     Metronome.bad++;
+
+                    // 打擊特效
+                    hitEffects[red_index].GetComponent<HitEffect>().CallHit(new Color(1, 0, 0, 1));
 
                 }
                 Metronome.score++; // 以後也用事件可能比較好
@@ -279,7 +288,11 @@ public class NoteReceiver : MonoBehaviour
                     //nowColor = goodHitColor * 5.0f;
                     good++;
                     Metronome.good++;
+                    //thePerfectGoodMiss.color = new Color(0.0f, 1.0f, 0, 1.0f);
+                    //thePerfectGoodMiss.text = "GOOD";
 
+                    // 打擊特效
+                    hitEffects[blue_index - 6].GetComponent<HitEffect>().CallHit(new Color(0,1,0,1));
                 }
                 else
                 {
@@ -288,6 +301,11 @@ public class NoteReceiver : MonoBehaviour
                     //nowColor = badHitColor * 2.0f;
                     bad++;
                     Metronome.bad++;
+                    //thePerfectGoodMiss.color = new Color(0.8f, 0, 0, 1.0f);
+                    //thePerfectGoodMiss.text = "BAD";
+
+                    // 打擊特效
+                    hitEffects[blue_index - 6].GetComponent<HitEffect>().CallHit(new Color(1, 0, 0, 1));
 
                 }
                 Metronome.score++; // 以後也用事件可能比較好

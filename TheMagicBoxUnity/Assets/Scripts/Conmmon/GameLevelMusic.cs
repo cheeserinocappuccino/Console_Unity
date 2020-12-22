@@ -84,7 +84,31 @@ public class GameLevelMusic : MonoBehaviour
             int spawner10 = _noteJsonHeader.everyNotes[i].rowPos == 10 ? 1 : 0;
             int spawner11 = _noteJsonHeader.everyNotes[i].rowPos == 11 ? 1 : 0;
 
-            bool[] temp = new bool[12];
+            int spawner17 = _noteJsonHeader.everyNotes[i].rowPos == 17 ? 1 : 0;
+
+            int spawner18 = _noteJsonHeader.everyNotes[i].rowPos == 18 ? 1 : 0;
+            int spawner19 = _noteJsonHeader.everyNotes[i].rowPos == 19 ? 1 : 0;
+            int spawner20 = _noteJsonHeader.everyNotes[i].rowPos == 20 ? 1 : 0;
+            int spawner21 = _noteJsonHeader.everyNotes[i].rowPos == 21? 1 : 0;
+            int spawner22 = _noteJsonHeader.everyNotes[i].rowPos == 22 ? 1 : 0;
+            int spawner23 = _noteJsonHeader.everyNotes[i].rowPos == 23 ? 1 : 0;
+            int spawner24 = _noteJsonHeader.everyNotes[i].rowPos == 24 ? 1 : 0;
+            int spawner25 = _noteJsonHeader.everyNotes[i].rowPos == 25 ? 1 : 0;
+            int spawner26 = _noteJsonHeader.everyNotes[i].rowPos == 26 ? 1 : 0;
+            int spawner27 = _noteJsonHeader.everyNotes[i].rowPos == 27 ? 1 : 0;
+            int spawner28 = _noteJsonHeader.everyNotes[i].rowPos == 28 ? 1 : 0;
+            int spawner29 = _noteJsonHeader.everyNotes[i].rowPos == 29 ? 1 : 0;
+            int spawner30 = _noteJsonHeader.everyNotes[i].rowPos == 30 ? 1 : 0;
+            int spawner31 = _noteJsonHeader.everyNotes[i].rowPos == 31 ? 1 : 0;
+            int spawner32 = _noteJsonHeader.everyNotes[i].rowPos == 32 ? 1 : 0;
+        
+
+
+
+
+
+
+            bool[] temp = new bool[33];
             // red
             temp[0] = spawner0 == 1 ? true : false;
             temp[1] = spawner1 == 1 ? true : false;
@@ -99,6 +123,27 @@ public class GameLevelMusic : MonoBehaviour
             temp[9] = spawner9 == 1 ? true : false;
             temp[10] = spawner10 == 1 ? true : false;
             temp[11] = spawner11 == 1 ? true : false;
+
+
+            //TouchBoard
+            temp[17] = spawner17 == 1 ? true : false;
+
+            temp[18] = spawner18 == 1 ? true : false;
+            temp[19] = spawner19 == 1 ? true : false;
+            temp[20] = spawner20 == 1 ? true : false;
+            temp[21] = spawner21 == 1 ? true : false;
+            temp[22] = spawner22 == 1 ? true : false;
+            temp[23] = spawner23 == 1 ? true : false;
+            temp[24] = spawner24 == 1 ? true : false;
+            temp[25] = spawner25 == 1 ? true : false;
+            temp[26] = spawner26 == 1 ? true : false;
+            temp[27] = spawner27 == 1 ? true : false;
+            temp[28] = spawner28 == 1 ? true : false;
+            temp[29] = spawner29 == 1 ? true : false;
+            temp[30] = spawner30 == 1 ? true : false;
+            temp[31] = spawner31 == 1 ? true : false;
+            temp[32] = spawner32 == 1 ? true : false;
+
 
 
             _noteJsonHeader.everyNotes[i].spawnners = temp;

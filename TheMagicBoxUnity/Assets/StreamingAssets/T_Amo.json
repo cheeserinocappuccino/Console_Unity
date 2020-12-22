@@ -1,0 +1,377 @@
+{
+  "everyNotes": [
+    {
+      "id": 0,
+      "measurement": 1,
+      "measure32": 21,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 0,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 1,
+      "measurement": 1,
+      "measure32": 26,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 10,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 2,
+      "measurement": 1,
+      "measure32": 34,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 4,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 3,
+      "measurement": 1,
+      "measure32": 46,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 4,
+      "measurement": 1,
+      "measure32": 49,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 4,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 5,
+      "measurement": 1,
+      "measure32": 57,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 8,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 6,
+      "measurement": 1,
+      "measure32": 77,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 7,
+      "measurement": 1,
+      "measure32": 81,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 5,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 8,
+      "measurement": 1,
+      "measure32": 122,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 4,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 9,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 16,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 10,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 17,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 11,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 20,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 12,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 22,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 13,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 25,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 14,
+      "measurement": 1,
+      "measure32": 125,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 28,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 15,
+      "measurement": 2,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 16,
+      "measurement": 3,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 17,
+      "measurement": 4,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 18,
+      "measurement": 5,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 19,
+      "measurement": 6,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 20,
+      "measurement": 7,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 21,
+      "measurement": 8,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 22,
+      "measurement": 9,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 23,
+      "measurement": 10,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 24,
+      "measurement": 11,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 25,
+      "measurement": 12,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 26,
+      "measurement": 13,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 27,
+      "measurement": 14,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 28,
+      "measurement": 15,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 29,
+      "measurement": 16,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 30,
+      "measurement": 17,
+      "measure32": 68,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 1,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    }
+
+  ]
+}

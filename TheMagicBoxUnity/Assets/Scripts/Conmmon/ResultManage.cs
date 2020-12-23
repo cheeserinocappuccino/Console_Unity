@@ -128,7 +128,7 @@ public class ResultManage : MonoBehaviour
         // combo
         while (nums[3] < parseGuy.combo)
         {
-            float nowTimePos = (1.0f / parseGuy.missNum) * (nums[2]);
+            float nowTimePos = (1.0f / parseGuy.missNum) * (nums[3]);
 
             nums[3] += 1;
             yield return new WaitForSeconds(0.5f - addingSpeedCurve.Evaluate(nowTimePos));

@@ -158,24 +158,24 @@
     },
     {
       "id": 13,
-      "measurement": 7,
-      "measure32": 127,
-      "attacktype": [
-        "Normal"
-      ],
-      "rowPos": 14,
-      "column1": "",
-      "column2": "",
-      "column3": ""
-    },
-    {
-      "id": 14,
       "measurement": 8,
       "measure32": 0,
       "attacktype": [
         "Normal"
       ],
       "rowPos": 8,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 14,
+      "measurement": 7,
+      "measure32": 127,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 14,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -615,11 +615,11 @@
     {
       "id": 51,
       "measurement": 20,
-      "measure32": 28,
+      "measure32": 26,
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 9,
+      "rowPos": 17,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -627,7 +627,7 @@
     {
       "id": 52,
       "measurement": 20,
-      "measure32": 60,
+      "measure32": 28,
       "attacktype": [
         "Normal"
       ],
@@ -639,6 +639,18 @@
     {
       "id": 53,
       "measurement": 20,
+      "measure32": 60,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 9,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 54,
+      "measurement": 20,
       "measure32": 90,
       "attacktype": [
         "Normal"
@@ -649,7 +661,7 @@
       "column3": ""
     },
     {
-      "id": 54,
+      "id": 55,
       "measurement": 20,
       "measure32": 122,
       "attacktype": [
@@ -661,7 +673,7 @@
       "column3": ""
     },
     {
-      "id": 55,
+      "id": 56,
       "measurement": 21,
       "measure32": 12,
       "attacktype": [
@@ -673,25 +685,13 @@
       "column3": ""
     },
     {
-      "id": 56,
-      "measurement": 21,
-      "measure32": 80,
-      "attacktype": [
-        "Normal"
-      ],
-      "rowPos": 17,
-      "column1": "",
-      "column2": "",
-      "column3": ""
-    },
-    {
       "id": 57,
       "measurement": 21,
       "measure32": 80,
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 31,
+      "rowPos": 20,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -703,7 +703,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 27,
+      "rowPos": 25,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -715,7 +715,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 23,
+      "rowPos": 24,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -727,7 +727,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 24,
+      "rowPos": 23,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -739,7 +739,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 25,
+      "rowPos": 27,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -751,7 +751,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 19,
+      "rowPos": 31,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -763,7 +763,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 18,
+      "rowPos": 28,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -775,7 +775,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 22,
+      "rowPos": 26,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -787,7 +787,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 23,
+      "rowPos": 24,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -799,7 +799,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 24,
+      "rowPos": 23,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -811,7 +811,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 26,
+      "rowPos": 22,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -823,7 +823,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 28,
+      "rowPos": 19,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -835,7 +835,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 19,
+      "rowPos": 31,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -847,7 +847,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 23,
+      "rowPos": 27,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -859,7 +859,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 24,
+      "rowPos": 25,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -871,7 +871,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 25,
+      "rowPos": 24,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -883,7 +883,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 27,
+      "rowPos": 23,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -895,7 +895,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 31,
+      "rowPos": 19,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -907,7 +907,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 26,
+      "rowPos": 23,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -919,7 +919,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 18,
+      "rowPos": 28,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -931,7 +931,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 24,
+      "rowPos": 22,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -943,7 +943,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 22,
+      "rowPos": 24,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -955,7 +955,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 28,
+      "rowPos": 19,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -967,7 +967,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 23,
+      "rowPos": 26,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1203,6 +1203,18 @@
     {
       "id": 100,
       "measurement": 34,
+      "measure32": 26,
+      "attacktype": [
+        "Normal"
+      ],
+      "rowPos": 34,
+      "column1": "",
+      "column2": "",
+      "column3": ""
+    },
+    {
+      "id": 101,
+      "measurement": 34,
       "measure32": 64,
       "attacktype": [
         "Normal"
@@ -1213,25 +1225,13 @@
       "column3": ""
     },
     {
-      "id": 101,
+      "id": 102,
       "measurement": 35,
       "measure32": 64,
       "attacktype": [
         "Normal"
       ],
       "rowPos": 11,
-      "column1": "",
-      "column2": "",
-      "column3": ""
-    },
-    {
-      "id": 102,
-      "measurement": 35,
-      "measure32": 74,
-      "attacktype": [
-        "Normal"
-      ],
-      "rowPos": 34,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1879,7 +1879,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 17,
+      "rowPos": 18,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1891,7 +1891,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 32,
+      "rowPos": 20,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1903,7 +1903,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 28,
+      "rowPos": 22,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1927,7 +1927,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 22,
+      "rowPos": 28,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1939,7 +1939,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 20,
+      "rowPos": 32,
       "column1": "",
       "column2": "",
       "column3": ""
@@ -1951,7 +1951,7 @@
       "attacktype": [
         "Normal"
       ],
-      "rowPos": 12,
+      "rowPos": 13,
       "column1": "",
       "column2": "",
       "column3": ""

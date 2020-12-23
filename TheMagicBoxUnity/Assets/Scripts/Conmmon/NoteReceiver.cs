@@ -112,7 +112,7 @@ public class NoteReceiver : MonoBehaviour
         blueGamepoint.transform.rotation = Quaternion.Euler(0, 0, -blue_degree);
 
         // REd
-        red_degree = -(ControllerController.OutterRing_CalData / (float)15.0f);
+        red_degree = -(ControllerController.OutterRing_CalData / (float)35.0f);
         red_degree = Mathf.Repeat(red_degree, 360);
         redGamePoint.transform.rotation = Quaternion.Euler(0, 0, -red_degree);
 
